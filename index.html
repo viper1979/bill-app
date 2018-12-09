@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <!-- https://ourcodeworld.com/articles/read/202/how-to-include-and-use-jquery-in-electron-framework -->
+    <script>window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min.js');</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js" integrity="sha256-tW5LzEC7QjhG0CiAvxlseMTs2qJS7u3DRPauDjFJ3zo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.de.min.js" integrity="sha256-MRg0FdDDqvQkQ3VIUMZCZ39M6O40kpoIYqCGU2rRyxE=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" integrity="sha256-JDBcnYeV19J14isGd3EtnsCQK05d8PczJ5+fvEvBJvI=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.standalone.min.css" integrity="sha256-unmO7Ii0ibwgpO1fZTJgpVl/KmWuue/QKQNXF3PeliM=" crossorigin="anonymous" />
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+
+    <div class="alert alert-info" role="alert">
+      This is a info alert—check it out!
+    </div>
+
+    <button type="button" class="btn btn-secondary btn-lg">Neue Rechnung</button>
+    <button type="button" class="btn btn-secondary btn-lg">Editiere Rechnung</button>
+    <button type="button" class="btn btn-secondary btn-lg">Lösche Rechnung</button>
+    
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <input type="checkbox" aria-label="Checkbox for following text input">
+        </div>
+      </div>
+      <input type="text" class="form-control" aria-label="Text input with checkbox">
+    </div>
+
+    <div class="input-group date">
+      <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+    </div>    
+
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+
+      $('.input-group.date').datepicker({
+        format: "dd. MM yyyy",
+        todayBtn: true,
+        clearBtn: true,
+        language: "de",
+        calendarWeeks: true,
+        todayHighlight: true
+      });      
+    </script>
+  </body>
+</html>
